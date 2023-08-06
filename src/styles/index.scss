@@ -1,3 +1,7 @@
+:root {
+  --color-white: #fff;
+}
+
 *,
 *::after,
 *::before {
@@ -11,5 +15,10 @@
 
 html {
   font-size: 62.5%;
-  background-color: #fff;
+  background-color: var(--color-white);
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Kumbh Sans", sans-serif;
 }

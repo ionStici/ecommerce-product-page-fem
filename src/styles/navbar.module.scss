@@ -1,0 +1,75 @@
+// // // // // // // // // // // // // // // // // // // //
+
+@mixin emptyBtn {
+  display: flex;
+  background-color: transparent;
+  border: none;
+}
+
+// // // // // // // // // // // // // // // // // // // //
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px 28px 24px;
+}
+
+// // // // // // // // // // // // // // // // // // // //
+
+.btn_toggle_navbar {
+  @include emptyBtn;
+
+  cursor: pointer;
+  position: relative;
+  width: 16px;
+  margin-right: 16px;
+  padding-top: 5px;
+
+  img {
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+}
+
+// // // // // // // // // // // // // // // // // // // //
+
+.nav {
+}
+
+// // // // // // // // // // // // // // // // // // // //
+
+.right_box {
+  display: flex;
+  align-items: center;
+  column-gap: 22px;
+  margin-left: auto;
+}
+
+.btn_cart {
+  @include emptyBtn;
+
+  img {
+    pointer-events: none;
+  }
+}
+
+.btn_avatar {
+  @include emptyBtn;
+
+  img {
+    pointer-events: none;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// // // // // // // // // // // // // // // // // // // //
