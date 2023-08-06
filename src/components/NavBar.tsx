@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./../styles/navbar.module.scss";
-
 import logo from "./../images/logo.svg";
 import userPhoto from "./../images/image-avatar.png";
 import iconClose from "./../images/icon-close.svg";
@@ -11,15 +10,18 @@ const NavBar = function () {
   const [navStatus, setNavStatus] = React.useState(false);
   const toggleNavbar = ({ target }) => {
     const icon = target.querySelector("img");
+    const nav = target.closest("header").querySelector(`.${styles.nav}`);
 
     if (!navStatus) {
       icon.src = iconClose;
+      nav.classList.add(styles.open);
       setNavStatus(true);
       return;
     }
 
     if (navStatus) {
       icon.src = iconHamb;
+      nav.classList.remove(styles.open);
       setNavStatus(false);
       return;
     }
@@ -37,7 +39,25 @@ const NavBar = function () {
 
       <img src={logo} alt="Sneakers Logo" />
 
-      <nav className={styles.nav}></nav>
+      <nav className={`${styles.nav}`}>
+        <ul>
+          <li>
+            <a href=".">Collections</a>
+          </li>
+          <li>
+            <a href=".">Men</a>
+          </li>
+          <li>
+            <a href=".">Women</a>
+          </li>
+          <li>
+            <a href=".">About</a>
+          </li>
+          <li>
+            <a href=".">Contact</a>
+          </li>
+        </ul>
+      </nav>
 
       <div className={styles.right_box}>
         <button className={styles.btn_cart} aria-label="Open Cart">
