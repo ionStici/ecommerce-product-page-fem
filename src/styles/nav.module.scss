@@ -22,6 +22,7 @@
   width: 16px;
   padding: 0 1px;
   position: relative;
+  z-index: 10;
 
   &::after {
     content: "";
@@ -44,25 +45,69 @@
 .btn_logo {
   margin-left: 16px;
 
-  img {
-  }
+  //   img {}
 }
 
 // // // // // // // // // // // // // // // // // // // //
 
 .nav {
-  display: none;
+  width: 100vw;
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  top: 0;
 
   ul {
+    width: 250px;
+    height: 100vh;
+    padding: 92px 0 0 25px;
+    background-color: var(--color-white);
+    list-style: none;
   }
 
   li {
+    color: var(--color-black-font);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+
+    ::selection {
+      color: currentColor;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 
   a,
   a:link,
   a:visited {
+    display: flex;
     text-decoration: none;
+    color: inherit;
+  }
+
+  // // // // // // // // // //
+
+  ul {
+    transition: transform 0.5s;
+    transform: translateX(-250px);
+  }
+
+  pointer-events: none;
+  transition: background-color 0.4s;
+}
+
+.open {
+  .nav {
+    pointer-events: revert;
+
+    background-color: var(--color-black-75);
+
+    ul {
+      transform: translateX(0);
+    }
   }
 }
 
