@@ -1,11 +1,13 @@
 import "./styles/index.scss";
-import NavBar from "./components/NavBar";
+import Nav from "./components/Nav";
+import Slider from "./components/Slider";
 
 function App() {
   return (
     <>
       <main>
-        <NavBar />
+        <Nav />
+        <Slider />
       </main>
     </>
   );
