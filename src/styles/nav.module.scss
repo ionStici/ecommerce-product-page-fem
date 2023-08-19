@@ -10,7 +10,17 @@
   display: flex;
   align-items: center;
   height: 68px;
-  padding: 0 24px;
+  margin: 0 24px;
+
+  @media only screen and (min-width: 500px) {
+    border-bottom: 1px solid #e4e9f2;
+    margin-bottom: 45px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    height: 112px;
+    margin-bottom: 90px;
+  }
 }
 
 // // // // // // // // // // // // // // // // // // // //
@@ -39,6 +49,10 @@
     user-select: none;
     pointer-events: none;
   }
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 }
 
 // // // // // // // // // // // // // // // // // // // //
@@ -46,38 +60,65 @@
 .btn_logo {
   margin-left: 16px;
 
-  //   img {}
+  @media only screen and (min-width: 768px) {
+    margin-left: 0;
+  }
 }
 
 // // // // // // // // // // // // // // // // // // // //
 
 .nav {
-  width: 100vw;
-  position: absolute;
-  z-index: 5;
-  left: 0;
-  top: 0;
+  @media only screen and (max-width: 767px) {
+    width: 100vw;
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    top: 0;
+  }
 
   ul {
-    width: 250px;
-    height: 100vh;
-    padding: 92px 0 0 25px;
-    background-color: var(--color-white);
     list-style: none;
+
+    @media only screen and (max-width: 767px) {
+      width: 250px;
+      height: 100vh;
+      padding: 92px 0 0 25px;
+      background-color: var(--color-white);
+    }
+
+    @media only screen and (min-width: 768px) {
+      display: flex;
+      margin-left: 56px;
+    }
   }
 
   li {
-    color: var(--color-black-font);
-    font-size: 18px;
-    font-weight: 700;
     line-height: 26px;
 
     ::selection {
       color: currentColor;
     }
 
+    @media only screen and (max-width: 767px) {
+      color: var(--color-black-font);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    @media only screen and (min-width: 768px) {
+      color: #69707d;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
     &:not(:last-child) {
-      margin-bottom: 20px;
+      @media only screen and (max-width: 767px) {
+        margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: 768px) {
+        margin-right: 32px;
+      }
     }
   }
 
@@ -92,22 +133,28 @@
   // // // // // // // // // //
 
   ul {
-    transition: transform 0.5s;
-    transform: translateX(-250px);
+    @media only screen and (max-width: 767px) {
+      transition: transform 0.5s;
+      transform: translateX(-250px);
+    }
   }
 
-  pointer-events: none;
-  transition: background-color 0.4s;
+  @media only screen and (max-width: 767px) {
+    pointer-events: none;
+    transition: background-color 0.4s;
+  }
 }
 
 .open {
-  .nav {
-    pointer-events: revert;
+  @media only screen and (max-width: 767px) {
+    .nav {
+      pointer-events: revert;
 
-    background-color: var(--color-black-75);
+      background-color: var(--color-black-75);
 
-    ul {
-      transform: translateX(0);
+      ul {
+        transform: translateX(0);
+      }
     }
   }
 }
