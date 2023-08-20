@@ -29,5 +29,7 @@ body {
 main {
   display: block;
 
-  margin-bottom: 1000px;
+  @media only screen and (min-width: 768px) {
+    padding: 0 40px;
+  }
 }
