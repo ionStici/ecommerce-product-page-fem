@@ -1,6 +1,7 @@
 import "./styles/index.scss";
 import Nav from "./components/Nav";
 import Slider from "./components/Slider";
+import About from "./components/About";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <main>
         <Nav />
         <Slider />
+        <About />
       </main>
     </>
   );
