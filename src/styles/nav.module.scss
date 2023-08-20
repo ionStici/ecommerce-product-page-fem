@@ -294,6 +294,25 @@
   height: 0;
   transition: height 0.5s ease-out;
   pointer-events: none;
+
+  @media only screen and (min-width: 500px) {
+    width: 360px;
+    position: absolute;
+    top: 40px;
+    right: -10px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    top: 50px;
+  }
+
+  @media only screen and (min-width: 840px) {
+    top: 66px;
+  }
+
+  @media only screen and (min-width: 1300px) {
+    right: -85px;
+  }
 }
 
 .display_cart {

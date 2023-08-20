@@ -43,41 +43,45 @@ const iconPrev = (
 const Slider = function () {
   const [count, setCount] = React.useState(1);
   const img: any = React.useRef(null);
+  const boxes = React.useRef(null);
 
   const imgs = [prod_1, prod_2, prod_3, prod_4];
 
+  // // // // //
   const moveImg = function (e) {
     const dir = e.target.dataset.img;
+
+    const btns = boxes.current.querySelectorAll(`.${styles.btn_box}`);
+    btns.forEach((box) => box.classList.remove(styles.active));
 
     if (dir === "prev" && count !== 1) {
       setCount((prev) => prev - 1);
       img.current.src = imgs[count - 2];
+      btns[imgs.indexOf(imgs[count - 2])].classList.add(styles.active);
     }
 
     if (dir === "prev" && count === 1) {
       setCount(4);
       img.current.src = imgs[3];
+      btns[imgs.indexOf(imgs[3])].classList.add(styles.active);
     }
 
     if (dir === "next" && count !== 4) {
       setCount((prev) => prev + 1);
       img.current.src = imgs[count];
+      btns[imgs.indexOf(imgs[count])].classList.add(styles.active);
     }
 
     if (dir === "next" && count === 4) {
       setCount(1);
       img.current.src = imgs[0];
+      btns[imgs.indexOf(imgs[0])].classList.add(styles.active);
     }
 
     if (+dir >= 1 && +dir <= 4) {
       setCount(+dir);
       img.current.src = imgs[+dir - 1];
-
-      // prettier-ignore
-      const boxes = e.target.closest(`.${styles.imgs_box}`).querySelectorAll(`.${styles.btn_box}`);
-      boxes.forEach((box) => box.classList.remove(styles.active));
-      const box = e.target;
-      box.classList.add(styles.active);
+      btns[+dir - 1].classList.add(styles.active);
     }
   };
 
@@ -88,7 +92,7 @@ const Slider = function () {
           <img src={prod_1} className={styles.img} alt="" ref={img} />
         </div>
 
-        <div className={styles.imgs_box}>
+        <div className={styles.imgs_box} ref={boxes}>
           <button
             className={`${styles.btn_box} ${styles.active}`}
             data-img="1"
