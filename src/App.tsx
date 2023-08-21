@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/index.scss";
+import prodCover from "./images/image-product-1-thumbnail.jpg";
 import Nav from "./components/Nav";
 import Slider from "./components/Slider";
 import Product from "./components/Product";
@@ -16,6 +17,7 @@ function App() {
     price: "$125.00",
     discount: "50%",
     oldPrice: "$250.00",
+    prodCover: prodCover,
   };
 
   return (
