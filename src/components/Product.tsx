@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./../styles/about.module.scss";
+import styles from "./../styles/product.module.scss";
 
 const iconMinus = (
   <svg
@@ -45,40 +45,39 @@ const iconCart = (
   </svg>
 );
 
-const About = function () {
+const About = function (props) {
   const icons = { minus: iconMinus, plus: iconPlus, cart: iconCart };
+  const product = props.product;
 
   return (
     <>
-      <section>
-        <div>
-          <p>Sneaker Company</p>
-          <h1>Fall Limited Edition Sneakers</h1>
-          <p>
-            These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they&#8217;ll withstand
-            everything the weather can offer.
-          </p>
-        </div>
+      <section className={styles.section}>
+        <div className={styles.wrapper}>
+          <div className={styles.box_text}>
+            <p className={styles.label}>{product.label}</p>
+            <h1 className={styles.title}>{product.title}</h1>
+            <p className={styles.text}>{product.description}</p>
+          </div>
 
-        <div>
-          <p>
-            <span>$125.00</span>
-            <span>50%</span>
-            <span>$250.00</span>
-          </p>
-        </div>
+          <div className={styles.box_price}>
+            <p>
+              <span className={styles.price}>{product.price}</span>
+              <span className={styles.discound}>{product.discount}</span>
+              <span className={styles.old_price}>{product.oldPrice}</span>
+            </p>
+          </div>
 
-        <div>
-          <button>{icons.minus}</button>
-          <p>1</p>
-          <button>{icons.plus}</button>
-        </div>
+          <div className={styles.box_btns}>
+            <button className={styles.btn_minus}>{icons.minus}</button>
+            <p className={styles.num}>0</p>
+            <button className={styles.btn_plus}>{icons.plus}</button>
+          </div>
 
-        <button>
-          {icons.cart}
-          <span>Add to cart</span>
-        </button>
+          <button className={styles.btn_add}>
+            {icons.cart}
+            <span>Add to cart</span>
+          </button>
+        </div>
       </section>
     </>
   );
