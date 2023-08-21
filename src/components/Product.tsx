@@ -46,8 +46,34 @@ const iconCart = (
 );
 
 const About = function (props) {
+  const [count, setCount] = React.useState(0);
+  const num = React.useRef(null);
   const icons = { minus: iconMinus, plus: iconPlus, cart: iconCart };
   const product = props.product;
+
+  const updateQuantity = function ({ target }) {
+    if (target.nodeName !== "BUTTON") return;
+    num.current.classList.add(styles.an1);
+
+    if (target.dataset.btn === "minus") {
+      if (count <= 0) return;
+      setTimeout(() => {
+        setCount((prev) => prev - 1);
+
+        num.current.classList.add(styles.an2);
+      }, 300);
+    }
+
+    if (target.dataset.btn === "plus") {
+      setTimeout(() => {
+        setCount((prev) => prev + 1);
+
+        num.current.classList.add(styles.an2);
+      }, 300);
+    }
+  };
+
+  const addToCart = function () {};
 
   return (
     <>
@@ -67,10 +93,16 @@ const About = function (props) {
             </p>
           </div>
 
-          <div className={styles.box_btns}>
-            <button className={styles.btn_minus}>{icons.minus}</button>
-            <p className={styles.num}>0</p>
-            <button className={styles.btn_plus}>{icons.plus}</button>
+          <div className={styles.box_btns} onClick={updateQuantity}>
+            <button className={styles.btn_minus} data-btn="minus">
+              {icons.minus}
+            </button>
+            <p className={styles.num} ref={num}>
+              {count}
+            </p>
+            <button className={styles.btn_plus} data-btn="plus">
+              {icons.plus}
+            </button>
           </div>
 
           <button className={styles.btn_add}>
