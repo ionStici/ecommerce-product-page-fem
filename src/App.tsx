@@ -1,9 +1,13 @@
+import React from "react";
 import "./styles/index.scss";
 import Nav from "./components/Nav";
 import Slider from "./components/Slider";
-import About from "./components/Product";
+import Product from "./components/Product";
 
 function App() {
+  const [count, setCount] = React.useState(0);
+  const addToCart = (c) => setCount(c);
+
   const product = {
     label: "Sneaker Company",
     title: "Fall Limited Edition Sneakers",
@@ -17,9 +21,9 @@ function App() {
   return (
     <>
       <main>
-        <Nav />
-        <Slider product={product} />
-        <About product={product} />
+        <Nav product={product} count={count} />
+        <Slider />
+        <Product product={product} addToCart={addToCart} />
       </main>
     </>
   );

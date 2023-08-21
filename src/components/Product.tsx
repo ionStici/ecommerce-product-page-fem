@@ -45,7 +45,7 @@ const iconCart = (
   </svg>
 );
 
-const About = function (props) {
+const Product = function (props) {
   const [count, setCount] = React.useState(0);
   const num = React.useRef(null);
   const icons = { minus: iconMinus, plus: iconPlus, cart: iconCart };
@@ -54,42 +54,43 @@ const About = function (props) {
   const updateQuantity = function ({ target }) {
     if (target.nodeName !== "BUTTON") return;
     if (count <= 0 && target.dataset.btn === "minus") return;
-
+    if (count >= 25 && target.dataset.btn === "plus") return;
     const numEl = num.current;
 
-    numEl.classList.add(styles.an1);
-    setTimeout(() => numEl.classList.add(styles.an2), 250);
-
     if (target.dataset.btn === "minus") {
+      numEl.classList.add(styles.an_m1);
+      setTimeout(() => numEl.classList.add(styles.an_m2), 200);
+
       setTimeout(() => {
         setCount((prev) => prev - 1);
-        numEl.classList.add(styles.an3);
+        numEl.classList.add(styles.an_m3);
 
         setTimeout(() => {
-          numEl.classList.remove(styles.an1);
-          numEl.classList.remove(styles.an2);
-          numEl.classList.remove(styles.an3);
-        }, 300);
-      }, 270);
+          numEl.classList.remove(styles.an_m1);
+          numEl.classList.remove(styles.an_m2);
+          numEl.classList.remove(styles.an_m3);
+        }, 250);
+      }, 220);
     }
 
     if (target.dataset.btn === "plus") {
+      numEl.classList.add(styles.an_p1);
+      setTimeout(() => numEl.classList.add(styles.an_p2), 200);
+
       setTimeout(() => {
         setCount((prev) => prev + 1);
-        numEl.classList.add(styles.an3);
+        numEl.classList.add(styles.an_p3);
 
         setTimeout(() => {
-          numEl.classList.remove(styles.an1);
-          numEl.classList.remove(styles.an2);
-          numEl.classList.remove(styles.an3);
-        }, 300);
-      }, 270);
+          numEl.classList.remove(styles.an_p1);
+          numEl.classList.remove(styles.an_p2);
+          numEl.classList.remove(styles.an_p3);
+        }, 250);
+      }, 220);
     }
   };
 
-  const addToCart = function () {
-    console.log(count);
-  };
+  const addToCart = () => props.addToCart(count);
 
   return (
     <>
@@ -131,4 +132,4 @@ const About = function (props) {
   );
 };
 
-export default About;
+export default Product;

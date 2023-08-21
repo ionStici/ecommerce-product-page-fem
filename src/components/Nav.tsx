@@ -17,7 +17,7 @@ const icon_cart = (
   </svg>
 );
 
-const Nav = function () {
+const Nav = function (props) {
   const [navCon, setNavCon] = React.useState(false);
   const [cartCon, setCartCon] = React.useState(false);
 
@@ -62,6 +62,8 @@ const Nav = function () {
       return;
     }
   };
+
+  console.log(props.count);
 
   return (
     <>

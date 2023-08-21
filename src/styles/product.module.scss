@@ -135,18 +135,33 @@
   font-weight: 700;
 }
 
-.an1 {
-  transition: transform 0.25s;
+.an_p1 {
+  transition: transform 0.2s;
   transform: translateY(40px) scale(0);
 }
 
-.an2 {
+.an_p2 {
   transition: none;
   transform: translateY(-40px) scale(0);
 }
 
-.an3 {
-  transition: transform 0.25s;
+.an_p3 {
+  transition: transform 0.2s;
+  transform: translateY(0) scale(1);
+}
+
+.an_m1 {
+  transition: transform 0.2s;
+  transform: translateY(-40px) scale(0);
+}
+
+.an_m2 {
+  transition: none;
+  transform: translateY(40px) scale(0);
+}
+
+.an_m3 {
+  transition: transform 0.2s;
   transform: translateY(0) scale(1);
 }
 
