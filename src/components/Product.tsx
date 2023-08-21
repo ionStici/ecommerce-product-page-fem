@@ -53,27 +53,43 @@ const About = function (props) {
 
   const updateQuantity = function ({ target }) {
     if (target.nodeName !== "BUTTON") return;
-    num.current.classList.add(styles.an1);
+    if (count <= 0 && target.dataset.btn === "minus") return;
+
+    const numEl = num.current;
+
+    numEl.classList.add(styles.an1);
+    setTimeout(() => numEl.classList.add(styles.an2), 250);
 
     if (target.dataset.btn === "minus") {
-      if (count <= 0) return;
       setTimeout(() => {
         setCount((prev) => prev - 1);
+        numEl.classList.add(styles.an3);
 
-        num.current.classList.add(styles.an2);
-      }, 300);
+        setTimeout(() => {
+          numEl.classList.remove(styles.an1);
+          numEl.classList.remove(styles.an2);
+          numEl.classList.remove(styles.an3);
+        }, 300);
+      }, 270);
     }
 
     if (target.dataset.btn === "plus") {
       setTimeout(() => {
         setCount((prev) => prev + 1);
+        numEl.classList.add(styles.an3);
 
-        num.current.classList.add(styles.an2);
-      }, 300);
+        setTimeout(() => {
+          numEl.classList.remove(styles.an1);
+          numEl.classList.remove(styles.an2);
+          numEl.classList.remove(styles.an3);
+        }, 300);
+      }, 270);
     }
   };
 
-  const addToCart = function () {};
+  const addToCart = function () {
+    console.log(count);
+  };
 
   return (
     <>
@@ -105,7 +121,7 @@ const About = function (props) {
             </button>
           </div>
 
-          <button className={styles.btn_add}>
+          <button className={styles.btn_add} onClick={addToCart}>
             {icons.cart}
             <span>Add to cart</span>
           </button>

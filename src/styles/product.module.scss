@@ -131,16 +131,22 @@
 
 .num {
   color: var(--color-black-font);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
 }
 
 .an1 {
-  transition: transform 0.3s;
+  transition: transform 0.25s;
   transform: translateY(40px) scale(0);
 }
 
 .an2 {
+  transition: none;
+  transform: translateY(-40px) scale(0);
+}
+
+.an3 {
+  transition: transform 0.25s;
   transform: translateY(0) scale(1);
 }
 
