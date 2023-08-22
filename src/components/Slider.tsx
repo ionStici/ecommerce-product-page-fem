@@ -149,15 +149,13 @@ const Slider = function () {
               <img className={styles.popup__img} src={prod_1} alt="" />
             </div>
 
-            <div className={styles.popup__arrows_box}>
-              <button className={styles.popup__btn_prev} data-img="prev">
-                {iconPrev}
-              </button>
+            <button className={styles.popup__btn_prev} data-img="prev">
+              {iconPrev}
+            </button>
 
-              <button className={styles.popup__btn_next} data-img="next">
-                {iconNext}
-              </button>
-            </div>
+            <button className={styles.popup__btn_next} data-img="next">
+              {iconNext}
+            </button>
 
             <div className={styles.popup__imgs_container}>
               <button

@@ -191,6 +191,7 @@
   &__container {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   &__close {
@@ -305,25 +306,48 @@
 // // // // // // // // // // // // // // // // // // // //
 
 .popup {
-  &__arrows_box {
-    display: none;
-
-    position: absolute;
-    z-index: 17.5;
-  }
-
   &__btn_prev,
   &__btn_next {
+    position: absolute;
+    z-index: 17.5;
+    top: 280px;
+
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+
+    cursor: pointer;
+
+    path {
+      transition: stroke 0.2s;
+    }
+
+    &:hover path {
+      stroke: var(--color-orange);
+    }
+
+    &:active path {
+      stroke: var(--color-black-75);
+    }
   }
 
   &__btn_prev {
+    left: -26px;
+
     svg {
       pointer-events: none;
+      margin-top: 2px;
+      margin-left: -4px;
     }
   }
 
   &__btn_next {
+    right: -26px;
+
     svg {
+      margin-top: 2px;
+      margin-right: -4px;
       pointer-events: none;
     }
   }
