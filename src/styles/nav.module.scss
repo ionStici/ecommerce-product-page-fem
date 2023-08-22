@@ -368,9 +368,22 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
+
+  @media only screen and (max-width: 360px) {
+    max-width: 200px;
+  }
+
+  @media only screen and (max-width: 345px) {
+    max-width: 155px;
+  }
 }
 
-// .cart_product_title {}
+.cart_product_title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
 
 .cart_product_price {
   span {
@@ -429,11 +442,10 @@
 
   &:hover {
     background-color: var(--color-orange-hover);
-    transform: scale(1.05) translateY(3px);
   }
 
   &:active {
-    transform: scale(0.97) translateY(0);
+    transform: scale(0.95);
   }
 }
 

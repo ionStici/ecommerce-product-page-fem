@@ -83,6 +83,8 @@ const Nav = function (props) {
     }
   };
 
+  const emptyCart = () => props.addToCart(0);
+
   return (
     <>
       <header className={styles.header}>
@@ -136,11 +138,6 @@ const Nav = function (props) {
             {qty < 1 ? (
               <p className={styles.cart_empty_text}>Your cart is empty</p>
             ) : (
-              //
-              //
-              //
-              //
-              //
               <div className={styles.cart_product_wrapper}>
                 <div className={styles.cart_product_box}>
                   <img
@@ -156,18 +153,16 @@ const Nav = function (props) {
                     </p>
                   </div>
 
-                  <button className={styles.cart_btn_delete}>
+                  <button
+                    className={styles.cart_btn_delete}
+                    onClick={emptyCart}
+                  >
                     {icon_delete}
                   </button>
                 </div>
 
                 <button className={styles.cart_btn_checkout}>Checkout</button>
               </div>
-              //
-              //
-              //
-              //
-              //
             )}
           </section>
 

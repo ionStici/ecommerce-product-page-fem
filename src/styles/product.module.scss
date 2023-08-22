@@ -2,9 +2,18 @@
 
 .section {
   padding: 24px 24px 88px 24px;
+
+  @media only screen and (min-width: 500px) {
+    width: 445px;
+    margin: 0 auto;
+    padding: 0 0 132px 0;
+  }
 }
 
 .wrapper {
+  @media only screen and (min-width: 500px) {
+    padding-top: 50px;
+  }
 }
 
 // // // // // // // // // // // // // // // // // // // //
@@ -20,6 +29,13 @@
   text-transform: uppercase;
 
   margin-bottom: 19px;
+
+  @media only screen and (min-width: 840px) {
+    font-size: 13px;
+    letter-spacing: 2px;
+
+    margin-bottom: 27px;
+  }
 }
 
 .title {
@@ -29,6 +45,9 @@
   line-height: 32px;
 
   margin-bottom: 15px;
+
+  @media only screen and (min-width: 840px) {
+  }
 }
 
 .text {
