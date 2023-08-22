@@ -31,12 +31,12 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
   font-family: "Kumbh Sans", sans-serif;
 }
 
 main {
   display: block;
+  position: relative;
 
   @media only screen and (min-width: 768px) {
     padding: 0 40px;

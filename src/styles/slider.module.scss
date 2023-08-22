@@ -164,3 +164,169 @@
 }
 
 // // // // // // // // // // // // // // // // // // // //
+
+// popup__active
+
+.popup {
+  position: fixed;
+  z-index: 15;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+
+  &__overflow_hidden {
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    background-color: var(--color-black-75);
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__close {
+    border: none;
+    position: relative;
+    background-color: transparent;
+    margin-bottom: 24px;
+
+    margin-left: auto;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      z-index: 17.5;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    svg {
+      pointer-events: none;
+    }
+
+    path {
+      transition: fill 0.2s, transform 0.2s;
+      fill: var(--color-white);
+    }
+
+    &:hover path {
+      fill: var(--color-orange);
+    }
+
+    &:active path {
+      fill: var(--color-white);
+    }
+  }
+
+  &__img_box {
+    width: 550px;
+    height: 550px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__imgs_container {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 40px;
+  }
+
+  &__img_btn {
+    border: 2px solid transparent;
+    background-color: transparent;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+
+    width: 88px;
+    height: 88px;
+
+    transition: border 0.3s;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 31px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 18;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      transition: background-color 0.3s;
+    }
+
+    &_active {
+      border: 2px solid #ff7e1b;
+    }
+
+    &_active {
+      &::after {
+        background-color: hsla(0, 0%, 100%, 0.75) !important;
+      }
+    }
+
+    &:hover {
+      &::after {
+        background-color: hsla(0, 0%, 100%, 0.5);
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// // // // // // // // // // // // // // // // // // // //
+
+.popup {
+  &__arrows_box {
+    display: none;
+
+    position: absolute;
+    z-index: 17.5;
+  }
+
+  &__btn_prev,
+  &__btn_next {
+  }
+
+  &__btn_prev {
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  &__btn_next {
+    svg {
+      pointer-events: none;
+    }
+  }
+}
+
+// // // // // // // // // // // // // // // // // // // //

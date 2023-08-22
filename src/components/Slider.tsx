@@ -13,9 +13,6 @@ import prod_3_sm from "./../images/image-product-3-thumbnail.jpg";
 import prod_4 from "./../images/image-product-4.jpg";
 import prod_4_sm from "./../images/image-product-4-thumbnail.jpg";
 
-import icon_next from "./../images/icon-next.svg";
-import icon_prev from "./../images/icon-previous.svg";
-
 const iconNext = (
   <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -40,6 +37,16 @@ const iconPrev = (
   </svg>
 );
 
+const iconClose = (
+  <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+      fill="#69707D"
+      fillRule="evenodd"
+    />
+  </svg>
+);
+
 const Slider = function () {
   const [count, setCount] = React.useState(1);
   const img: any = React.useRef(null);
@@ -47,7 +54,6 @@ const Slider = function () {
 
   const imgs = [prod_1, prod_2, prod_3, prod_4];
 
-  // // // // //
   const moveImg = function (e) {
     const dir = e.target.dataset.img;
 
@@ -85,11 +91,22 @@ const Slider = function () {
     }
   };
 
+  const openPopup = function ({ target }) {
+    const body = target.closest("body");
+    body.classList.add(styles.popup__overflow_hidden);
+  };
+
   return (
     <>
       <section className={styles.slider}>
         <div className={styles.img_box}>
-          <img src={prod_1} className={styles.img} alt="" ref={img} />
+          <img
+            src={prod_1}
+            className={styles.img}
+            onClick={openPopup}
+            alt=""
+            ref={img}
+          />
         </div>
 
         <div className={styles.imgs_box} ref={boxes}>
@@ -121,6 +138,49 @@ const Slider = function () {
         <button className={styles.btn_next} data-img="next" onClick={moveImg}>
           {iconNext}
         </button>
+      </section>
+
+      <section className={styles.popup}>
+        <div className={styles.popup__wrapper}>
+          <div className={styles.popup__container}>
+            <button className={styles.popup__close}>{iconClose}</button>
+
+            <div className={styles.popup__img_box}>
+              <img className={styles.popup__img} src={prod_1} alt="" />
+            </div>
+
+            <div className={styles.popup__arrows_box}>
+              <button className={styles.popup__btn_prev} data-img="prev">
+                {iconPrev}
+              </button>
+
+              <button className={styles.popup__btn_next} data-img="next">
+                {iconNext}
+              </button>
+            </div>
+
+            <div className={styles.popup__imgs_container}>
+              <button
+                className={`${styles.popup__img_btn} ${styles.popup__img_btn_active}`}
+                data-img="1"
+              >
+                <img src={prod_1_sm} alt="" />
+              </button>
+
+              <button className={styles.popup__img_btn} data-img="2">
+                <img src={prod_2_sm} alt="" />
+              </button>
+
+              <button className={styles.popup__img_btn} data-img="3">
+                <img src={prod_3_sm} alt="" />
+              </button>
+
+              <button className={styles.popup__img_btn} data-img="4">
+                <img src={prod_4_sm} alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
