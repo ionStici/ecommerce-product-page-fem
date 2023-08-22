@@ -48,6 +48,7 @@ const iconCart = (
 const Product = function (props) {
   const [count, setCount] = React.useState(0);
   const num = React.useRef(null);
+
   const icons = { minus: iconMinus, plus: iconPlus, cart: iconCart };
   const product = props.product;
 

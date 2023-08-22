@@ -43,17 +43,22 @@ main {
   }
 
   @media only screen and (min-width: 1000px) {
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width: 1110px;
+    margin: 0 auto 132px auto;
 
     display: grid;
     align-items: center;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 445px 20px 445px 1fr;
     grid-template-rows: min-content 1fr;
   }
 
-  @media only screen and (min-width: 1100px) {
-    column-gap: 125px;
+  @media only screen and (min-width: 1050px) {
+    grid-template-columns: 1fr 445px 50px 445px 1fr;
+  }
+
+  @media only screen and (min-width: 1175px) {
+    padding: 0;
+    grid-template-columns: 1fr 445px 125px 445px 1fr;
   }
 }
