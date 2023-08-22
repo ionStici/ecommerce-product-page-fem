@@ -8,7 +8,6 @@ import Product from "./components/Product";
 function App() {
   const [count, setCount] = React.useState(0);
   const addToCart = (c) => setCount(c);
-
   const product = {
     label: "Sneaker Company",
     title: "Fall Limited Edition Sneakers",

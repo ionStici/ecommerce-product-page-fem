@@ -37,21 +37,24 @@ const Nav = function (props) {
   const [navCon, setNavCon] = React.useState(false);
   const [cartCon, setCartCon] = React.useState(false);
 
-  const toggleBtn = React.useRef(null);
-  const cart = React.useRef(null);
+  const navToggleBtn = React.useRef(null);
+  const cartContainer = React.useRef(null);
+
+  const prod = props.product;
+  const qty = props.count;
+  const newPrice = "$" + (+prod.price.slice(1) * qty + ".00");
 
   const toggleNav = function ({ target }) {
     const node = target.nodeName;
     if (node === "UL" || node === "LI" || node === "A") return;
 
-    const btn = toggleBtn.current;
+    const btn = navToggleBtn.current;
     const icon = btn.querySelector("img");
     const header = btn.closest("header");
 
     if (!navCon) {
       icon.src = iconClose;
       header.classList.add(styles.open);
-
       setNavCon(true);
       return;
     }
@@ -59,27 +62,26 @@ const Nav = function (props) {
     if (navCon) {
       icon.src = iconHamb;
       header.classList.remove(styles.open);
-
       setNavCon(false);
       return;
     }
   };
 
   const toggleCart = function (e) {
+    const cart = cartContainer.current;
+
     if (!cartCon) {
-      cart.current.classList.add(styles.display_cart);
+      cart.classList.add(styles.display_cart);
       setCartCon(true);
       return;
     }
 
     if (cartCon) {
-      cart.current.classList.remove(styles.display_cart);
+      cart.classList.remove(styles.display_cart);
       setCartCon(false);
       return;
     }
   };
-
-  const newPrice = "$" + (+props.product.price.slice(1) * props.count + ".00");
 
   return (
     <>
@@ -88,7 +90,7 @@ const Nav = function (props) {
           className={styles.btn_toggle_nav}
           aria-label="Open Navigation Bar"
           onClick={toggleNav}
-          ref={toggleBtn}
+          ref={navToggleBtn}
         >
           <img src={iconHamb} alt="" />
         </button>
@@ -119,37 +121,53 @@ const Nav = function (props) {
 
         <div className={styles.right_corner_box}>
           <button
-            className={styles.btn_cart}
+            // prettier-ignore
+            className={`${styles.btn_cart} ${cartCon ? styles.cart_icon_black : ""}`}
             aria-label="Open Cart"
             onClick={toggleCart}
           >
             {icon_cart}
-            <p>3</p>
+            {qty > 0 ? <p>{qty}</p> : ""}
           </button>
 
-          <section className={styles.cart_box} ref={cart}>
-            <p className={styles.cart_title}>Cart</p>
+          <section className={styles.cart_box} ref={cartContainer}>
+            <p className={styles.cart_header}>Cart</p>
 
-            {props.count < 1 ? (
-              <p className={styles.cart_empty}>Your cart is empty</p>
+            {qty < 1 ? (
+              <p className={styles.cart_empty_text}>Your cart is empty</p>
             ) : (
-              <div>
-                <div>
-                  {/* <img src={props.product.prodCover} alt="" /> */}
+              //
+              //
+              //
+              //
+              //
+              <div className={styles.cart_product_wrapper}>
+                <div className={styles.cart_product_box}>
+                  <img
+                    src={prod.prodCover}
+                    className={styles.cart_product_img}
+                    alt={prod.title}
+                  />
 
-                  <div>
-                    <p>{props.product.title}</p>
-                    <p>
-                      {props.product.price} x {props.count}{" "}
-                      <span>{newPrice}</span>
+                  <div className={styles.cart_text_box}>
+                    <p className={styles.cart_product_title}>{prod.title}</p>
+                    <p className={styles.cart_product_price}>
+                      {prod.price} x {qty} <span>{newPrice}</span>
                     </p>
                   </div>
 
-                  <button>{icon_delete}</button>
+                  <button className={styles.cart_btn_delete}>
+                    {icon_delete}
+                  </button>
                 </div>
 
-                <button>Checkout</button>
+                <button className={styles.cart_btn_checkout}>Checkout</button>
               </div>
+              //
+              //
+              //
+              //
+              //
             )}
           </section>
 

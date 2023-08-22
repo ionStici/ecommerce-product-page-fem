@@ -232,9 +232,6 @@
 
     user-select: none;
     pointer-events: none;
-
-    // temp
-    opacity: 0;
   }
 
   path {
@@ -244,6 +241,10 @@
   &:hover path {
     fill: var(--color-black-font);
   }
+}
+
+.cart_icon_black path {
+  fill: var(--color-black-font);
 }
 
 .btn_user_photo {
@@ -293,8 +294,10 @@
   background-color: var(--color-white);
   box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.5);
 
-  overflow: hidden;
   height: 0;
+  //   height: 260px;
+
+  overflow: hidden;
   transition: height 0.5s ease-out;
   pointer-events: none;
 
@@ -323,7 +326,7 @@
   pointer-events: revert;
 }
 
-.cart_title {
+.cart_header {
   color: var(--color-black-font);
   font-size: 16px;
   font-weight: 700;
@@ -331,9 +334,8 @@
   border-bottom: 1px solid #e4e9f2;
 }
 
-.cart_empty {
+.cart_empty_text {
   text-align: center;
-
   color: #69707d;
   font-size: 16px;
   font-weight: 700;
@@ -342,5 +344,97 @@
 }
 
 // // // // // // // // // // // // // // // // // // // //
+
+.cart_product_wrapper {
+  padding: 24px 24px 0 24px;
+}
+
+.cart_product_box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.cart_product_img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+}
+
+.cart_text_box {
+  margin-left: 16px;
+
+  color: var(--color-grey);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+// .cart_product_title {}
+
+.cart_product_price {
+  span {
+    color: var(--color-black-font);
+    font-weight: 700;
+  }
+}
+
+.cart_btn_delete {
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  margin-left: auto;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 35px;
+    height: 35px;
+  }
+
+  svg {
+    pointer-events: none;
+  }
+
+  path {
+    transition: fill 0.2s;
+  }
+
+  &:hover path {
+    fill: var(--color-black-font);
+  }
+}
+
+.cart_btn_checkout {
+  width: 100%;
+  height: 56px;
+
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-orange);
+
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-white);
+
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+
+  &:hover {
+    background-color: var(--color-orange-hover);
+    transform: scale(1.05) translateY(3px);
+  }
+
+  &:active {
+    transform: scale(0.97) translateY(0);
+  }
+}
 
 // // // // // // // // // // // // // // // // // // // //
