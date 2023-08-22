@@ -28,6 +28,13 @@
   @media only screen and (min-width: 840px) {
     margin-bottom: 90px;
   }
+
+  @media only screen and (min-width: 1000px) {
+    min-width: revert;
+    width: 100%;
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+  }
 }
 
 // // // // // // // // // // // // // // // // // // // //

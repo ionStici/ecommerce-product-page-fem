@@ -8,11 +8,21 @@
     margin: 0 auto;
     padding: 0 0 132px 0;
   }
+
+  @media only screen and (min-width: 1000px) {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    padding: 0;
+  }
 }
 
 .wrapper {
   @media only screen and (min-width: 500px) {
     padding-top: 50px;
+  }
+
+  @media only screen and (min-width: 1000px) {
+    padding-top: 0;
   }
 }
 
