@@ -47,6 +47,9 @@
   margin-bottom: 15px;
 
   @media only screen and (min-width: 840px) {
+    font-size: 44px;
+    line-height: 48px;
+    margin-bottom: 32px;
   }
 }
 
@@ -57,6 +60,11 @@
   line-height: 25px;
 
   margin-bottom: 28px;
+
+  @media only screen and (min-width: 840px) {
+    font-size: 16px;
+    line-height: 26px;
+  }
 }
 
 // // // // // // // // // // // // // // // // // // // //
@@ -64,9 +72,19 @@
 .box_price {
   margin-bottom: 26px;
 
+  @media only screen and (min-width: 840px) {
+    margin-bottom: 32px;
+  }
+
   p {
     display: flex;
     align-items: center;
+
+    @media only screen and (min-width: 840px) {
+      display: grid;
+      grid-template-columns: min-content min-content;
+      row-gap: 10px;
+    }
   }
 }
 
@@ -100,6 +118,20 @@
   text-decoration: line-through;
 
   margin-left: auto;
+
+  @media only screen and (min-width: 840px) {
+    margin-left: 0;
+  }
+}
+
+// // // // // // // // // // // // // // // // // // // //
+
+.btns_wrapper {
+  @media only screen and (min-width: 840px) {
+    display: grid;
+    grid-template-columns: 157px 1fr;
+    column-gap: 16px;
+  }
 }
 
 // // // // // // // // // // // // // // // // // // // //
@@ -115,6 +147,10 @@
   overflow: hidden;
 
   margin-bottom: 16px;
+
+  @media only screen and (min-width: 840px) {
+    margin-bottom: 0;
+  }
 }
 
 .btn_minus,

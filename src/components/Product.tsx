@@ -110,22 +110,24 @@ const Product = function (props) {
             </p>
           </div>
 
-          <div className={styles.box_btns} onClick={updateQuantity}>
-            <button className={styles.btn_minus} data-btn="minus">
-              {icons.minus}
-            </button>
-            <p className={styles.num} ref={num}>
-              {count}
-            </p>
-            <button className={styles.btn_plus} data-btn="plus">
-              {icons.plus}
+          <div className={styles.btns_wrapper}>
+            <div className={styles.box_btns} onClick={updateQuantity}>
+              <button className={styles.btn_minus} data-btn="minus">
+                {icons.minus}
+              </button>
+              <p className={styles.num} ref={num}>
+                {count}
+              </p>
+              <button className={styles.btn_plus} data-btn="plus">
+                {icons.plus}
+              </button>
+            </div>
+
+            <button className={styles.btn_add} onClick={addToCart}>
+              {icons.cart}
+              <span>Add to cart</span>
             </button>
           </div>
-
-          <button className={styles.btn_add} onClick={addToCart}>
-            {icons.cart}
-            <span>Add to cart</span>
-          </button>
         </div>
       </section>
     </>
