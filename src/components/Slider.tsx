@@ -91,10 +91,62 @@ const Slider = function () {
     }
   };
 
+  // // // // // // // // // // // // // // // // // // // //
+
+  const popupContainer = React.useRef(null);
+
   const openPopup = function ({ target }) {
+    const popup = popupContainer.current;
     const body = target.closest("body");
     body.classList.add(styles.popup__overflow_hidden);
+
+    popup.classList.add(styles.show_popup);
+    setTimeout(() => popup.classList.add(styles.animate_popup), 1);
   };
+
+  const closePopup = function ({ target }) {
+    if (
+      target.classList.contains(styles.popup__wrapper) ||
+      target.classList.contains(styles.popup__close)
+    ) {
+      ("");
+    } else return;
+
+    const popup = popupContainer.current;
+    const body = target.closest("body");
+    body.classList.remove(styles.popup__overflow_hidden);
+
+    popup.classList.remove(styles.animate_popup);
+    popup.classList.remove(styles.show_popup);
+  };
+
+  // // // // // // // // // // // // // // // // // // // //
+
+  const [popupCount, setPopupCount] = React.useState(1);
+  const popupImg = React.useRef(null);
+
+  const changePopupImg = function ({ target }) {
+    const type = target.dataset.img;
+    console.log(+type);
+
+    if (type === "prev") {
+      if (popupCount > 1) setPopupCount((p) => p - 1);
+      if (popupCount === 1) setPopupCount(4);
+    }
+
+    if (type === "next") {
+      if (popupCount < 4) setPopupCount((p) => p + 1);
+      if (popupCount === 4) setPopupCount(1);
+    }
+
+    if (typeof +type === "number") {
+      setPopupCount(+type);
+    }
+
+    popupImg.current.src = imgs[popupCount];
+  };
+
+  // // // // // // // // // // // // // // // // // // // //
 
   return (
     <>
@@ -140,20 +192,35 @@ const Slider = function () {
         </button>
       </section>
 
-      <section className={styles.popup}>
-        <div className={styles.popup__wrapper}>
+      <section className={styles.popup} ref={popupContainer}>
+        <div className={styles.popup__wrapper} onClick={closePopup}>
           <div className={styles.popup__container}>
-            <button className={styles.popup__close}>{iconClose}</button>
+            <button className={styles.popup__close} onClick={closePopup}>
+              {iconClose}
+            </button>
 
             <div className={styles.popup__img_box}>
-              <img className={styles.popup__img} src={prod_1} alt="" />
+              <img
+                className={styles.popup__img}
+                src={prod_1}
+                ref={popupImg}
+                alt=""
+              />
             </div>
 
-            <button className={styles.popup__btn_prev} data-img="prev">
+            <button
+              className={styles.popup__btn_prev}
+              data-img="prev"
+              onClick={changePopupImg}
+            >
               {iconPrev}
             </button>
 
-            <button className={styles.popup__btn_next} data-img="next">
+            <button
+              className={styles.popup__btn_next}
+              data-img="next"
+              onClick={changePopupImg}
+            >
               {iconNext}
             </button>
 
@@ -161,19 +228,32 @@ const Slider = function () {
               <button
                 className={`${styles.popup__img_btn} ${styles.popup__img_btn_active}`}
                 data-img="1"
+                onClick={changePopupImg}
               >
                 <img src={prod_1_sm} alt="" />
               </button>
 
-              <button className={styles.popup__img_btn} data-img="2">
+              <button
+                className={styles.popup__img_btn}
+                data-img="2"
+                onClick={changePopupImg}
+              >
                 <img src={prod_2_sm} alt="" />
               </button>
 
-              <button className={styles.popup__img_btn} data-img="3">
+              <button
+                className={styles.popup__img_btn}
+                data-img="3"
+                onClick={changePopupImg}
+              >
                 <img src={prod_3_sm} alt="" />
               </button>
 
-              <button className={styles.popup__img_btn} data-img="4">
+              <button
+                className={styles.popup__img_btn}
+                data-img="4"
+                onClick={changePopupImg}
+              >
                 <img src={prod_4_sm} alt="" />
               </button>
             </div>
