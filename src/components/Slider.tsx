@@ -124,32 +124,41 @@ const Slider = function () {
 
   const [popupCount, setPopupCount] = React.useState(1);
   const popupImg = React.useRef(null);
+  const popupImgsBox = React.useRef(null);
 
   const changePopupImg = function ({ target }) {
     const type = target.dataset.img;
     const img = popupImg.current;
 
+    const btns = popupImgsBox.current.querySelectorAll("button");
+    btns.forEach((btn) => btn.classList.remove(styles.popup__img_btn_active));
+
     if (type === "prev" && popupCount > 1) {
       setPopupCount((p) => p - 1);
       img.src = imgs[popupCount - 2];
+      btns[popupCount - 2].classList.add(styles.popup__img_btn_active);
     }
     if (type === "prev" && popupCount === 1) {
       setPopupCount(4);
       img.src = imgs[3];
+      btns[3].classList.add(styles.popup__img_btn_active);
     }
 
     if (type === "next" && popupCount < 4) {
       setPopupCount((p) => p + 1);
       img.src = imgs[popupCount];
+      btns[popupCount].classList.add(styles.popup__img_btn_active);
     }
     if (type === "next" && popupCount === 4) {
       setPopupCount(1);
       img.src = imgs[0];
+      btns[0].classList.add(styles.popup__img_btn_active);
     }
 
     if (+type >= 1 && +type <= 4) {
       setPopupCount(+type);
       img.src = imgs[+type - 1];
+      btns[+type - 1].classList.add(styles.popup__img_btn_active);
     }
   };
 
@@ -231,7 +240,7 @@ const Slider = function () {
               {iconNext}
             </button>
 
-            <div className={styles.popup__imgs_container}>
+            <div className={styles.popup__imgs_container} ref={popupImgsBox}>
               <button
                 className={`${styles.popup__img_btn} ${styles.popup__img_btn_active}`}
                 data-img="1"
