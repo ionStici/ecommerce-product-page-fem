@@ -127,23 +127,30 @@ const Slider = function () {
 
   const changePopupImg = function ({ target }) {
     const type = target.dataset.img;
-    console.log(+type);
+    const img = popupImg.current;
 
-    if (type === "prev") {
-      if (popupCount > 1) setPopupCount((p) => p - 1);
-      if (popupCount === 1) setPopupCount(4);
+    if (type === "prev" && popupCount > 1) {
+      setPopupCount((p) => p - 1);
+      img.src = imgs[popupCount - 2];
+    }
+    if (type === "prev" && popupCount === 1) {
+      setPopupCount(4);
+      img.src = imgs[3];
     }
 
-    if (type === "next") {
-      if (popupCount < 4) setPopupCount((p) => p + 1);
-      if (popupCount === 4) setPopupCount(1);
+    if (type === "next" && popupCount < 4) {
+      setPopupCount((p) => p + 1);
+      img.src = imgs[popupCount];
+    }
+    if (type === "next" && popupCount === 4) {
+      setPopupCount(1);
+      img.src = imgs[0];
     }
 
-    if (typeof +type === "number") {
+    if (+type >= 1 && +type <= 4) {
       setPopupCount(+type);
+      img.src = imgs[+type - 1];
     }
-
-    popupImg.current.src = imgs[popupCount];
   };
 
   // // // // // // // // // // // // // // // // // // // //
