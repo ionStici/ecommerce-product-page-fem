@@ -242,7 +242,7 @@
     border-radius: 15px;
     overflow: hidden;
 
-    @media only screen and (min-width: 700px) {
+    @media only screen and (min-width: 700px) and (min-height: 720px) {
       width: 550px;
       height: 550px;
     }
@@ -322,7 +322,7 @@
     z-index: 17.5;
     top: 240px;
 
-    @media only screen and (min-width: 700px) {
+    @media only screen and (min-width: 700px) and (min-height: 720px) {
       top: 280px;
     }
 
