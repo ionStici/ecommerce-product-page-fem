@@ -47,7 +47,7 @@ const iconClose = (
   </svg>
 );
 
-const Slider = function () {
+const Slider = function (props) {
   const [count, setCount] = React.useState(1);
   const img: any = React.useRef(null);
   const boxes = React.useRef(null);
@@ -96,12 +96,14 @@ const Slider = function () {
   const popupContainer = React.useRef(null);
 
   const openPopup = function ({ target }) {
-    const popup = popupContainer.current;
-    const body = target.closest("body");
-    body.classList.add(styles.popup__overflow_hidden);
+    if (window.matchMedia("(min-width: 500px)").matches) {
+      const popup = popupContainer.current;
+      const body = target.closest("body");
+      body.classList.add(styles.popup__overflow_hidden);
 
-    popup.classList.add(styles.show_popup);
-    setTimeout(() => popup.classList.add(styles.animate_popup), 1);
+      popup.classList.add(styles.show_popup);
+      setTimeout(() => popup.classList.add(styles.animate_popup), 1);
+    }
   };
 
   const closePopup = function ({ target }) {
@@ -161,6 +163,8 @@ const Slider = function () {
       btns[+type - 1].classList.add(styles.popup__img_btn_active);
     }
   };
+
+  // // // // // // // // // // // // // // // // // // // //
 
   // // // // // // // // // // // // // // // // // // // //
 

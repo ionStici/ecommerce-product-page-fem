@@ -48,6 +48,7 @@ const iconCart = (
 const Product = function (props) {
   const [count, setCount] = React.useState(0);
   const num = React.useRef(null);
+  const mainSection = React.useRef(null);
 
   const icons = { minus: iconMinus, plus: iconPlus, cart: iconCart };
   const product = props.product;
@@ -95,7 +96,7 @@ const Product = function (props) {
 
   return (
     <>
-      <section className={styles.section}>
+      <section className={styles.section} ref={mainSection}>
         <div className={styles.wrapper}>
           <div className={styles.box_text}>
             <p className={styles.label}>{product.label}</p>

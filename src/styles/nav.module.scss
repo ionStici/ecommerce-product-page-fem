@@ -1,3 +1,5 @@
+// // // // // // // // // // // // // // // // // // // //
+
 @mixin repeated_btns {
   display: flex;
   background-color: transparent;
@@ -97,7 +99,7 @@
     @media only screen and (max-width: 767px) {
       width: 250px;
       height: 100vh;
-      padding: 92px 0 0 25px;
+      padding: 92px 25px 0 25px;
       background-color: var(--color-white);
     }
 
@@ -171,6 +173,7 @@
 
   @media only screen and (max-width: 767px) {
     pointer-events: none;
+    visibility: hidden;
     transition: background-color 0.4s;
   }
 }
@@ -179,6 +182,7 @@
   @media only screen and (max-width: 767px) {
     .nav {
       pointer-events: revert;
+      visibility: revert;
 
       background-color: var(--color-black-75);
 
