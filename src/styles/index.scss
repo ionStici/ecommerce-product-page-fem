@@ -1,64 +1,64 @@
 :root {
-  --color-white: #fff;
-  --color-black: #000;
-  --color-black-75: rgba(0, 0, 0, 0.75);
+    --color-white: #fff;
+    --color-black: #000;
+    --color-black-75: rgba(0, 0, 0, 0.75);
 
-  --color-black-font: #1d2026;
+    --color-black-font: #1d2026;
 
-  --color-grey: #69707d;
-  --color-grey-2: #b6bcc8;
-  --color-grey-3: #f6f8fd;
+    --color-grey: #69707d;
+    --color-grey-2: #b6bcc8;
+    --color-grey-3: #f6f8fd;
 
-  --color-orange: #ff7e1b;
-  --color-orange-hover: #ffab6a;
-  --color-orange-light: #ffeee2;
+    --color-orange: #ff7e1b;
+    --color-orange-hover: #ffab6a;
+    --color-orange-light: #ffeee2;
 }
 
 *,
 *::after,
 *::before {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  font-size: 62.5%;
-  background-color: var(--color-white);
+    font-size: 62.5%;
+    background-color: var(--color-white);
 }
 
 body {
-  font-family: "Kumbh Sans", sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
 }
 
 main {
-  display: block;
-  position: relative;
+    display: block;
+    position: relative;
 
-  @media only screen and (min-width: 768px) {
-    padding: 0 40px;
-  }
+    @media only screen and (min-width: 768px) {
+        padding: 0 40px;
+    }
 
-  @media only screen and (min-width: 1000px) {
-    max-width: 1110px;
-    margin: 0 auto 132px auto;
+    @media only screen and (min-width: 1000px) {
+        max-width: 1110px;
+        margin: 0 auto 132px auto;
 
-    display: grid;
-    align-items: center;
+        display: grid;
+        align-items: center;
 
-    grid-template-columns: 1fr 445px 20px 445px 1fr;
-    grid-template-rows: min-content 1fr;
-  }
+        grid-template-columns: 1fr 445px 20px 445px 1fr;
+        grid-template-rows: min-content 1fr;
+    }
 
-  @media only screen and (min-width: 1050px) {
-    grid-template-columns: 1fr 445px 50px 445px 1fr;
-  }
+    @media only screen and (min-width: 1050px) {
+        grid-template-columns: 1fr 445px 50px 445px 1fr;
+    }
 
-  @media only screen and (min-width: 1175px) {
-    padding: 0;
-    grid-template-columns: 1fr 445px 125px 445px 1fr;
-  }
+    @media only screen and (min-width: 1175px) {
+        padding: 0;
+        grid-template-columns: 1fr 445px 125px 445px 1fr;
+    }
 }
