@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
 import styles from './../styles/slider.module.scss';
+import { useState } from 'react';
+import { ReactSVG } from 'react-svg';
+import { useProduct } from '../ProductContext';
 import Popup from './Popup';
+import Button from '../ui/Button';
 
-//
-
-import { iconNext, iconPrev } from '../data/icons';
-
-import prod_1 from './../images/image-product-1.jpg';
-import prod_1_sm from './../images/image-product-1-thumbnail.jpg';
-
-import prod_2 from './../images/image-product-2.jpg';
-import prod_2_sm from './../images/image-product-2-thumbnail.jpg';
-
-import prod_3 from './../images/image-product-3.jpg';
-import prod_3_sm from './../images/image-product-3-thumbnail.jpg';
-
-import prod_4 from './../images/image-product-4.jpg';
-import prod_4_sm from './../images/image-product-4-thumbnail.jpg';
+const iconNext = '/images/icon-next.svg';
+const iconPrev = '/images/icon-previous.svg';
 
 const Slider = function () {
+  const { product } = useProduct();
+  const { images, thImages } = product;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const openPopup = () => {
@@ -31,50 +24,9 @@ const Slider = function () {
     document.body.classList.remove('hidden');
   };
 
-  // // // // // // // // // // // // // // // // // // // //
-
-  const [count, setCount] = React.useState(1);
-  const img = React.useRef(null);
-  const boxes = React.useRef(null);
-
-  const imgs = [prod_1, prod_2, prod_3, prod_4];
-
-  const moveImg = function (e) {
-    const dir = e.target.dataset.img;
-
-    const btns = boxes.current.querySelectorAll(`.${styles.btn_box}`);
-    btns.forEach((box) => box.classList.remove(styles.active));
-
-    if (dir === 'prev' && count !== 1) {
-      setCount((prev) => prev - 1);
-      img.current.src = imgs[count - 2];
-      btns[imgs.indexOf(imgs[count - 2])].classList.add(styles.active);
-    }
-
-    if (dir === 'prev' && count === 1) {
-      setCount(4);
-      img.current.src = imgs[3];
-      btns[imgs.indexOf(imgs[3])].classList.add(styles.active);
-    }
-
-    if (dir === 'next' && count !== 4) {
-      setCount((prev) => prev + 1);
-      img.current.src = imgs[count];
-      btns[imgs.indexOf(imgs[count])].classList.add(styles.active);
-    }
-
-    if (dir === 'next' && count === 4) {
-      setCount(1);
-      img.current.src = imgs[0];
-      btns[imgs.indexOf(imgs[0])].classList.add(styles.active);
-    }
-
-    if (+dir >= 1 && +dir <= 4) {
-      setCount(+dir);
-      img.current.src = imgs[+dir - 1];
-      btns[+dir - 1].classList.add(styles.active);
-    }
-  };
+  const [currImg, setCurrImg] = useState(0);
+  const nextImg = () => setCurrImg((prev) => (prev < 3 ? prev + 1 : 0));
+  const prevImg = () => setCurrImg((prev) => (prev > 0 ? prev - 1 : 3));
 
   return (
     <>
@@ -83,43 +35,34 @@ const Slider = function () {
       <section className={styles.slider}>
         <div className={styles.img_box}>
           <img
-            src={prod_1}
+            src={images[currImg]}
             className={styles.img}
             onClick={openPopup}
-            alt=""
-            ref={img}
+            alt={product.title}
           />
         </div>
 
-        <div className={styles.imgs_box} ref={boxes}>
-          <button
-            className={`${styles.btn_box} ${styles.active}`}
-            data-img="1"
-            onClick={moveImg}
-          >
-            <img src={prod_1_sm} alt="" />
-          </button>
-
-          <button className={styles.btn_box} data-img="2" onClick={moveImg}>
-            <img src={prod_2_sm} alt="" />
-          </button>
-
-          <button className={styles.btn_box} data-img="3" onClick={moveImg}>
-            <img src={prod_3_sm} alt="" />
-          </button>
-
-          <button className={styles.btn_box} data-img="4" onClick={moveImg}>
-            <img src={prod_4_sm} alt="" />
-          </button>
+        <div className={styles.imgs_box}>
+          {thImages.map((img, i) => (
+            <Button
+              key={img}
+              classes={`${styles.btn_box} ${
+                currImg === i ? styles.active : ''
+              }`}
+              onClick={() => setCurrImg(i)}
+            >
+              <img src={img} alt="" />
+            </Button>
+          ))}
         </div>
 
-        <button className={styles.btn_prev} data-img="prev" onClick={moveImg}>
-          {iconPrev}
-        </button>
+        <Button classes={styles.btn_prev} onClick={prevImg}>
+          <ReactSVG src={iconPrev} />
+        </Button>
 
-        <button className={styles.btn_next} data-img="next" onClick={moveImg}>
-          {iconNext}
-        </button>
+        <Button classes={styles.btn_next} onClick={nextImg}>
+          <ReactSVG src={iconNext} />
+        </Button>
       </section>
     </>
   );
