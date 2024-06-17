@@ -6,7 +6,7 @@ import Logo from './nav/Logo';
 import Cart from './nav/Cart';
 import NavLinks from './nav/NavLinks';
 import Profile from './nav/Profile';
-import Button from './nav/Button';
+import Button from '../ui/Button';
 
 const icon_cart = '/images/icon-cart.svg';
 const iconClose = '/images/icon-close.svg';
