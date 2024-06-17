@@ -18,7 +18,21 @@ import prod_3_sm from './../images/image-product-3-thumbnail.jpg';
 import prod_4 from './../images/image-product-4.jpg';
 import prod_4_sm from './../images/image-product-4-thumbnail.jpg';
 
-const Slider = function (props) {
+const Slider = function () {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openPopup = () => {
+    setIsOpen(true);
+    document.body.classList.add('hidden');
+  };
+
+  const closePopup = () => {
+    setIsOpen(false);
+    document.body.classList.remove('hidden');
+  };
+
+  // // // // // // // // // // // // // // // // // // // //
+
   const [count, setCount] = React.useState(1);
   const img = React.useRef(null);
   const boxes = React.useRef(null);
@@ -60,20 +74,6 @@ const Slider = function (props) {
       img.current.src = imgs[+dir - 1];
       btns[+dir - 1].classList.add(styles.active);
     }
-  };
-
-  // // // // // // // // // // // // // // // // // // // //
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openPopup = () => {
-    setIsOpen(true);
-    document.body.classList.add(styles.popup__overflow_hidden);
-  };
-
-  const closePopup = () => {
-    setIsOpen(false);
-    document.body.classList.remove(styles.popup__overflow_hidden);
   };
 
   return (

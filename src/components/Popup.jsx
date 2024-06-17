@@ -4,14 +4,11 @@ import { createPortal } from 'react-dom';
 import { ReactSVG } from 'react-svg';
 import Button from '../ui/Button';
 import { useOutsideClick } from '../hooks/useOutsideClick';
-
-// prettier-ignore
-const imgs = [ '/images/image-product-1.jpg', '/images/image-product-2.jpg', '/images/image-product-3.jpg', '/images/image-product-4.jpg', ];
-// prettier-ignore
-const smImgs = [ '/images/image-product-1-thumbnail.jpg', '/images/image-product-2-thumbnail.jpg', '/images/image-product-3-thumbnail.jpg', '/images/image-product-4-thumbnail.jpg', ];
+import { useProduct } from '../ProductContext';
 
 function Popup({ closePopup }) {
-  const popup = useRef(null);
+  const { product } = useProduct();
+  const { images, thImages } = product;
 
   useEffect(() => {
     setTimeout(() => popup.current.classList.add(styles.animate_popup), 1);
@@ -22,6 +19,7 @@ function Popup({ closePopup }) {
   const nextImg = () => setCurrImg((prev) => (prev < 3 ? prev + 1 : 0));
   const prevImg = () => setCurrImg((prev) => (prev > 0 ? prev - 1 : 3));
 
+  const popup = useRef(null);
   const ref = useOutsideClick(closePopup);
 
   return createPortal(
@@ -33,7 +31,7 @@ function Popup({ closePopup }) {
           </Button>
 
           <div className={styles.popup__img_box}>
-            <img className={styles.popup__img} src={imgs[currImg]} alt="" />
+            <img className={styles.popup__img} src={images[currImg]} alt="" />
           </div>
 
           <Button classes={styles.popup__btn_prev} onClick={prevImg}>
@@ -45,7 +43,7 @@ function Popup({ closePopup }) {
           </Button>
 
           <div className={styles.popup__imgs_container}>
-            {smImgs.map((img, i) => (
+            {thImages.map((img, i) => (
               <Button
                 key={img}
                 classes={`${styles.popup__img_btn} ${

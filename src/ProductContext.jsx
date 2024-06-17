@@ -1,9 +1,4 @@
-import ProductProvider from './ProductContext';
-import Nav from './components/Nav';
-import Slider from './components/Slider';
-import Product from './components/Product';
-import './styles/index.scss';
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const product = {
   label: 'Sneaker Company',
@@ -13,14 +8,13 @@ const product = {
   price: '$125.00',
   discount: '50%',
   oldPrice: '$250.00',
-  cover: '/images/image-product-1-thumbnail.jpg',
   images: [
     '/images/image-product-1.jpg',
     '/images/image-product-2.jpg',
     '/images/image-product-3.jpg',
     '/images/image-product-4.jpg',
   ],
-  smImages: [
+  thImages: [
     '/images/image-product-1-thumbnail.jpg',
     '/images/image-product-2-thumbnail.jpg',
     '/images/image-product-3-thumbnail.jpg',
@@ -28,17 +22,20 @@ const product = {
   ],
 };
 
-function App() {
+const ProductContext = createContext();
+
+export default function ProductProvider({ children }) {
   const [qty, setQty] = useState(0);
-  const addToCart = (c) => setQty(c);
 
   return (
-    <ProductProvider>
-      <Nav />
-      <Slider />
-      <Product product={product} addToCart={addToCart} />
-    </ProductProvider>
+    <ProductContext.Provider value={{ product, qty, setQty }}>
+      <main>{children}</main>
+    </ProductContext.Provider>
   );
 }
 
-export default App;
+export function useProduct() {
+  const context = useContext(ProductContext);
+  if (!context) throw new Error('Error');
+  return context;
+}

@@ -1,7 +1,9 @@
+import { useProduct } from '../../ProductContext';
 import styles from './../../styles/nav.module.scss';
 import { ReactSVG } from 'react-svg';
 
-function Cart({ product, qty, setQty, open }) {
+function Cart({ open }) {
+  const { product, qty, setQty } = useProduct();
   const newPrice = '$' + (+product.price.slice(1) * qty + '.00');
 
   return (
@@ -12,7 +14,7 @@ function Cart({ product, qty, setQty, open }) {
         <div className={styles.cart_product_wrapper}>
           <div className={styles.cart_product_box}>
             <img
-              src={product.cover}
+              src={product.thImages[0]}
               className={styles.cart_product_img}
               alt={product.title}
             />
