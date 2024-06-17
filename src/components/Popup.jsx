@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ReactSVG } from 'react-svg';
 import Button from '../ui/Button';
+import { useOutsideClick } from '../hooks/useOutsideClick';
 
 // prettier-ignore
 const imgs = [ '/images/image-product-1.jpg', '/images/image-product-2.jpg', '/images/image-product-3.jpg', '/images/image-product-4.jpg', ];
@@ -21,10 +22,12 @@ function Popup({ closePopup }) {
   const nextImg = () => setCurrImg((prev) => (prev < 3 ? prev + 1 : 0));
   const prevImg = () => setCurrImg((prev) => (prev > 0 ? prev - 1 : 3));
 
+  const ref = useOutsideClick(closePopup);
+
   return createPortal(
     <section className={`${styles.popup}`} ref={popup}>
       <div className={styles.popup__wrapper}>
-        <div className={styles.popup__container}>
+        <div className={styles.popup__container} ref={ref}>
           <Button classes={styles.popup__close} onClick={closePopup}>
             <ReactSVG src="/images/icon-close.svg" />
           </Button>

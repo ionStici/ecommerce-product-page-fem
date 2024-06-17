@@ -20,7 +20,7 @@ function Nav({ qty, setQty, product }) {
   const toggleCart = () => setIsCartOpen((cart) => !cart);
 
   return (
-    <header className={`${styles.header} ${isNavOpen && styles.open}`}>
+    <header className={`${styles.header} ${isNavOpen ? styles.open : ''}`}>
       <Button
         classes={styles.btn_toggle_nav}
         onClick={toggleNav}
@@ -30,7 +30,7 @@ function Nav({ qty, setQty, product }) {
       </Button>
 
       <Logo />
-      <NavLinks />
+      <NavLinks isOpen={isNavOpen} toggleNav={toggleNav} />
 
       <div className={styles.right_corner_box}>
         <Button

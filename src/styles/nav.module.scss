@@ -87,7 +87,7 @@
 .nav {
   @media only screen and (max-width: 767px) {
     width: 100vw;
-    position: absolute;
+    position: fixed;
     z-index: 5;
     left: 0;
     top: 0;
@@ -180,10 +180,18 @@
 
 .open {
   @media only screen and (max-width: 767px) {
+    .btn_logo {
+      margin-left: 32px;
+    }
+
+    .btn_toggle_nav {
+      position: fixed;
+    }
+
     .nav {
       pointer-events: revert;
       visibility: revert;
-
+      z-index: 9;
       background-color: var(--color-black-75);
 
       ul {
