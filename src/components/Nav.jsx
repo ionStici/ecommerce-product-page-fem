@@ -9,9 +9,9 @@ import styles from './../styles/nav.module.scss';
 import { ReactSVG } from 'react-svg';
 import { useProduct } from '../ProductContext';
 
-const icon_cart = '/images/icon-cart.svg';
-const iconClose = '/images/icon-close.svg';
-const iconHamb = '/images/icon-menu.svg';
+const icon_cart = 'images/icon-cart.svg';
+const iconClose = 'images/icon-close.svg';
+const iconHamb = 'images/icon-menu.svg';
 
 function Nav() {
   const { qty } = useProduct();

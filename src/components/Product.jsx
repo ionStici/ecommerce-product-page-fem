@@ -4,9 +4,9 @@ import { useProduct } from '../ProductContext';
 import { ReactSVG } from 'react-svg';
 import Button from '../ui/Button';
 
-const iconMinus = '/images/icon-minus.svg';
-const iconPlus = '/images/icon-plus.svg';
-const iconCart = '/images/icon-cart.svg';
+const iconMinus = 'images/icon-minus.svg';
+const iconPlus = 'images/icon-plus.svg';
+const iconCart = 'images/icon-cart.svg';
 
 const Product = function () {
   const { product, setQty } = useProduct();
@@ -23,7 +23,7 @@ const Product = function () {
     setTimeout(() => numEl.classList.add(styles.an_m2), 200);
 
     setTimeout(() => {
-      setCount((prev) => prev - 1);
+      setCount((prev) => (prev > 0 ? prev - 1 : 0));
       numEl.classList.add(styles.an_m3);
 
       setTimeout(() => {
@@ -71,13 +71,21 @@ const Product = function () {
 
         <div className={styles.btns_wrapper}>
           <div className={styles.box_btns}>
-            <Button classes={styles.btn_minus} onClick={dec}>
+            <Button
+              classes={styles.btn_minus}
+              onClick={dec}
+              ariaLabel="Decrease"
+            >
               <ReactSVG src={iconMinus} />
             </Button>
             <p className={styles.num} ref={num}>
               {count}
             </p>
-            <Button classes={styles.btn_plus} onClick={inc}>
+            <Button
+              classes={styles.btn_plus}
+              onClick={inc}
+              ariaLabel="Increase"
+            >
               <ReactSVG src={iconPlus} />
             </Button>
           </div>

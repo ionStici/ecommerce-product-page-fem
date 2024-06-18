@@ -9,16 +9,16 @@ const product = {
   discount: '50%',
   oldPrice: '$250.00',
   images: [
-    '/images/image-product-1.jpg',
-    '/images/image-product-2.jpg',
-    '/images/image-product-3.jpg',
-    '/images/image-product-4.jpg',
+    'images/image-product-1.jpg',
+    'images/image-product-2.jpg',
+    'images/image-product-3.jpg',
+    'images/image-product-4.jpg',
   ],
   thImages: [
-    '/images/image-product-1-thumbnail.jpg',
-    '/images/image-product-2-thumbnail.jpg',
-    '/images/image-product-3-thumbnail.jpg',
-    '/images/image-product-4-thumbnail.jpg',
+    'images/image-product-1-thumbnail.jpg',
+    'images/image-product-2-thumbnail.jpg',
+    'images/image-product-3-thumbnail.jpg',
+    'images/image-product-4-thumbnail.jpg',
   ],
 };
 

@@ -5,8 +5,8 @@ import { useProduct } from '../ProductContext';
 import Popup from './Popup';
 import Button from '../ui/Button';
 
-const iconNext = '/images/icon-next.svg';
-const iconPrev = '/images/icon-previous.svg';
+const iconNext = 'images/icon-next.svg';
+const iconPrev = 'images/icon-previous.svg';
 
 const Slider = function () {
   const { product } = useProduct();
@@ -39,6 +39,8 @@ const Slider = function () {
             className={styles.img}
             onClick={openPopup}
             alt={product.title}
+            width={445}
+            height={445}
           />
         </div>
 
@@ -50,17 +52,26 @@ const Slider = function () {
                 currImg === i ? styles.active : ''
               }`}
               onClick={() => setCurrImg(i)}
+              ariaLabel="Change Image"
             >
-              <img src={img} alt="" />
+              <img src={img} alt="" width={84} height={84} />
             </Button>
           ))}
         </div>
 
-        <Button classes={styles.btn_prev} onClick={prevImg}>
+        <Button
+          classes={styles.btn_prev}
+          onClick={prevImg}
+          ariaLabel="Previous Image"
+        >
           <ReactSVG src={iconPrev} />
         </Button>
 
-        <Button classes={styles.btn_next} onClick={nextImg}>
+        <Button
+          classes={styles.btn_next}
+          onClick={nextImg}
+          ariaLabel="Next Image"
+        >
           <ReactSVG src={iconNext} />
         </Button>
       </section>

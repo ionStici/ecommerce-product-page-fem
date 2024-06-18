@@ -1,5 +1,3 @@
-// // // // // // // // // // // // // // // // // // // //
-
 .slider {
   position: relative;
 
@@ -13,8 +11,6 @@
     grid-column: 2 / 3;
   }
 }
-
-// // // // // // // // // // // // // // // // // // // //
 
 .img_box {
   width: 100%;
@@ -30,16 +26,14 @@
 
 .img {
   width: 100%;
+  height: 100%;
   margin-top: -37.5px;
 
   @media only screen and (min-width: 500px) {
     margin-top: 0;
     cursor: zoom-in;
-    // cursor: zoom-out;
   }
 }
-
-// // // // // // // // // // // // // // // // // // // //
 
 .imgs_box {
   display: none;
@@ -104,8 +98,6 @@
   }
 }
 
-// // // // // // // // // // // // // // // // // // // //
-
 .btn_prev,
 .btn_next {
   cursor: pointer;
@@ -163,8 +155,6 @@
   }
 }
 
-// // // // // // // // // // // // // // // // // // // //
-
 .popup {
   display: none;
   @media only screen and (min-width: 500px) {
@@ -184,8 +174,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    // background-color: var(--color-black-75);
   }
 
   &__container {
@@ -309,8 +297,6 @@
   }
 }
 
-// // // // // // // // // // // // // // // // // // // //
-
 .popup {
   &__btn_prev,
   &__btn_next {
@@ -363,8 +349,6 @@
   }
 }
 
-// // // // // // // // // // // // // // // // // // // //
-
 .popup {
   @media only screen and (max-width: 499px) {
     display: none !important;
@@ -388,5 +372,3 @@
     }
   }
 }
-
-// // // // // // // // // // // // // // // // // // // //

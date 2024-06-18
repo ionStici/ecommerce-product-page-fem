@@ -29,8 +29,9 @@ function Cart({ open }) {
             <button
               className={styles.cart_btn_delete}
               onClick={() => setQty(0)}
+              aria-label="Clear Cart"
             >
-              <ReactSVG src="/images/icon-delete.svg" />
+              <ReactSVG src="images/icon-delete.svg" />
             </button>
           </div>
 

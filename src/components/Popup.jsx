@@ -26,20 +26,38 @@ function Popup({ closePopup }) {
     <section className={`${styles.popup}`} ref={popup}>
       <div className={styles.popup__wrapper}>
         <div className={styles.popup__container} ref={ref}>
-          <Button classes={styles.popup__close} onClick={closePopup}>
-            <ReactSVG src="/images/icon-close.svg" />
+          <Button
+            classes={styles.popup__close}
+            onClick={closePopup}
+            ariaLabel="Close Popup"
+          >
+            <ReactSVG src="images/icon-close.svg" />
           </Button>
 
           <div className={styles.popup__img_box}>
-            <img className={styles.popup__img} src={images[currImg]} alt="" />
+            <img
+              className={styles.popup__img}
+              src={images[currImg]}
+              alt=""
+              width={550}
+              height={550}
+            />
           </div>
 
-          <Button classes={styles.popup__btn_prev} onClick={prevImg}>
-            <ReactSVG src="/images/icon-previous.svg" />
+          <Button
+            classes={styles.popup__btn_prev}
+            onClick={prevImg}
+            ariaLabel="Previous Image"
+          >
+            <ReactSVG src="images/icon-previous.svg" />
           </Button>
 
-          <Button classes={styles.popup__btn_next} onClick={nextImg}>
-            <ReactSVG src="/images/icon-next.svg" />
+          <Button
+            classes={styles.popup__btn_next}
+            onClick={nextImg}
+            ariaLabel="Next Image"
+          >
+            <ReactSVG src="images/icon-next.svg" />
           </Button>
 
           <div className={styles.popup__imgs_container}>
@@ -50,8 +68,9 @@ function Popup({ closePopup }) {
                   currImg === i ? styles.popup__img_btn_active : ''
                 }`}
                 onClick={() => setCurrImg(i)}
+                ariaLabel="Change Image"
               >
-                <img src={img} alt="" />
+                <img src={img} alt="" width={84} height={84} />
               </Button>
             ))}
           </div>
